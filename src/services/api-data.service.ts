@@ -1,15 +1,20 @@
-import { NcCard, NcRulesSymbol } from '@nucard/models';
+import { NcCard, NcRulesSymbol } from '@nucard/models/dist';
 import { Config } from '../config';
 import * as algoliasearch from 'algoliasearch';
+import { FirebaseService } from './firebase.service';
+import { DocumentReference } from '@google-cloud/firestore';
 
 export class ApiDataService {
-    constructor(private config: Config) { }
+    constructor(
+        private config: Config,
+        private firebaseService: FirebaseService = new FirebaseService()) { }
 
     public getRulesSymbols(): Promise<NcRulesSymbol[]> {
         return Promise.resolve([
             { symbol: '[click]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/click.svg' },
             { symbol: '[credit]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/credit.svg' },
             { symbol: '[subroutine]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/subroutine.svg' },
+            { symbol: '[trash]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/trash.svg' },
         ]);
     }
 
@@ -19,12 +24,20 @@ export class ApiDataService {
             const algoliaClient = algoliasearch(this.config.algoliaAppId, this.config.algoliaApiKey);
             const index = algoliaClient.initIndex('cards');
 
-            index.search({ query, hitsPerPage: 10 }, (err: any, content: any) => {
+            index.search({ query, hitsPerPage: 10 }, async (err: any, content: any) => {
                 if (err) {
                     throw err;
                 }
 
-                resolve(content.hits);
+                // algolia gives us matching cards with content.hits - we need to merge the ids returned from algolia
+                // with data from our firebase database
+                const docRefs: DocumentReference[] = [];
+                for (const result of content.hits) {
+                    docRefs.push(this.firebaseService.getClient().doc(`cards/${result.objectID}`));
+                }
+
+                const docs = await this.firebaseService.getClient().getAll(...docRefs);
+                resolve(docs.map(d => d.data() as NcCard));
             });
         });
     }
