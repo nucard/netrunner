@@ -2,6 +2,10 @@
   "name": "nucard-netrunner",
   "version": "1.0.0",
   "description": "A NuCard-compatible API for Netrunner, the amazing (yet sadly decommissioned) CCG from Fantasy Flight. Data provided by netrunnerdb.com.",
+  "engines": {
+    "node": "8.11.3",
+    "npm": "6.1.x"
+  },
   "main": "dist/index.js",
   "scripts": {
     "start": "tsc && node dist/index.js",
