@@ -4,6 +4,7 @@
   "description": "A NuCard-compatible API for Netrunner, the amazing (yet sadly decommissioned) CCG from Fantasy Flight. Data provided by netrunnerdb.com.",
   "main": "dist/index.js",
   "scripts": {
+    "start": "tsc && node dist/index.js",
     "test": "test"
   },
   "repository": {
@@ -23,7 +24,7 @@
   },
   "homepage": "https://github.com/nucard/netrunner#readme",
   "dependencies": {
-    "@nucard/models": "^1.3.5",
+    "@nucard/models": "^1.3.7",
     "@types/algoliasearch": "^3.27.5",
     "algoliasearch": "^3.29.0"
   }

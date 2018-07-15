@@ -1,6 +1,6 @@
 import { RequestHandler } from 'express';
 import * as asyncHandler from 'express-async-handler';
-import { MtgService } from './services/mtg.service';
+import { ApiDataService } from './services/api-data.service';
 import { Config } from './config';
 
 export class RouteDefintion {
@@ -14,19 +14,19 @@ export class AppRoutes {
                 path: '/cards/random',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const mtgService = new MtgService(config);
-                    const card = await mtgService.getRandomCard();
+                    const dataService = new ApiDataService(config);
+                    const card = await dataService.getRandomCard();
 
                     response.type('application/json');
                     response.send(card);
                 }),
             },
             {
-                path: '/cards/query/:query',
+                path: '/cards/search/:query',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const mtgService = new MtgService(config);
-                    const cards = await mtgService.search(request.params.query);
+                    const dataService = new ApiDataService(config);
+                    const cards = await dataService.search(request.params.query);
 
                     response.type('application/json');
                     response.send(cards);
@@ -36,8 +36,8 @@ export class AppRoutes {
                 path: '/rules-symbols',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const mtgService = new MtgService(config);
-                    const symbols = await mtgService.getRulesSymbols();
+                    const dataService = new ApiDataService(config);
+                    const symbols = await dataService.getRulesSymbols();
 
                     response.type('application/json');
                     response.send(symbols);
@@ -47,7 +47,7 @@ export class AppRoutes {
                 path: '/',
                 method: 'GET',
                 handler: (request, response) => {
-                    response.send("Hello, friend. Who's your favorite walker?");
+                    response.send("Hello, friend. Who's your favorite runner?");
                 },
             },
         ];
