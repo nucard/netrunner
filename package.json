@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nucard/nucard-netrunner.git"
+    "url": "git+https://github.com/nucard/netrunner.git"
   },
   "keywords": [
     "nucard",
@@ -19,9 +19,9 @@
   "author": "Jammerware",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nucard/nucard-netrunner/issues"
+    "url": "https://github.com/nucard/netrunner/issues"
   },
-  "homepage": "https://github.com/nucard/nucard-netrunner#readme",
+  "homepage": "https://github.com/nucard/netrunner#readme",
   "dependencies": {
     "@nucard/models": "^1.3.5",
     "@types/algoliasearch": "^3.27.5",
