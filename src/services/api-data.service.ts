@@ -11,10 +11,10 @@ export class ApiDataService {
 
     public getRulesSymbols(): Promise<NcRulesSymbol[]> {
         return Promise.resolve([
-            { symbol: '[click]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/click.svg' },
-            { symbol: '[credit]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/credit.svg' },
-            { symbol: '[subroutine]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/subroutine.svg' },
-            { symbol: '[trash]', image: 'https://raw.githubusercontent.com/nucard/netrunner/master/assets/trash.svg' },
+            { symbol: '[click]', image: `${config.baseUrl}/click.svg` },
+            { symbol: '[credit]', image: `${config.baseUrl}/credit.svg` },
+            { symbol: '[subroutine]', image: `${config.baseUrl}/subroutine.svg` },
+            { symbol: '[trash]', image: `${config.baseUrl}/trash.svg` },
         ]);
     }
 
