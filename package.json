@@ -1,0 +1,30 @@
+{
+  "name": "nucard-netrunner",
+  "version": "1.0.0",
+  "description": "A NuCard-compatible API for Netrunner, the amazing (yet sadly decommissioned) CCG from Fantasy Flight. Data provided by netrunnerdb.com.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nucard/nucard-netrunner.git"
+  },
+  "keywords": [
+    "nucard",
+    "netrunner",
+    "ccg",
+    "tcg"
+  ],
+  "author": "Jammerware",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nucard/nucard-netrunner/issues"
+  },
+  "homepage": "https://github.com/nucard/nucard-netrunner#readme",
+  "dependencies": {
+    "@nucard/models": "^1.3.5",
+    "@types/algoliasearch": "^3.27.5",
+    "algoliasearch": "^3.29.0"
+  }
+}
