@@ -27,5 +27,8 @@
     "@nucard/models": "^1.3.7",
     "@types/algoliasearch": "^3.27.5",
     "algoliasearch": "^3.29.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.9.2"
   }
 }
