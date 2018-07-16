@@ -11,6 +11,13 @@ export class AppRoutes {
     public static getRoutes(config: Config): RouteDefintion[] {
         return [
             {
+                path: '/cards/:cardId',
+                method: 'GET',
+                handler: asyncHandler(async (request, response) => {
+                    // TODO: get a card
+                });
+            }
+            {
                 path: '/cards/random',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
@@ -32,6 +39,18 @@ export class AppRoutes {
                     response.send(cards);
                 }),
             },
+            {
+                path: '/external-providers/:cardId',
+                method: 'GET',
+                handler: asyncHandler(async (requext, response) => {
+                    const dataService = new ApiDataService(config);
+                    const card = await dataService.getCard(request.params.cardId);
+                    const providers = await dataService.getExternalProviderData(card)
+
+                    response.type('application.json');
+                    response.send(providers);
+                });
+            }
             {
                 path: '/rules-symbols',
                 method: 'GET',
