@@ -11,12 +11,21 @@ export class AppRoutes {
     public static getRoutes(config: Config): RouteDefintion[] {
         return [
             {
-                path: '/cards/:cardId',
+                path: '/cards/:cardId(\\d+)',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    // TODO: get a card
-                });
-            }
+                    const dataService = new ApiDataService(config);
+                    const card = await dataService.getCard(request.params.cardId);
+
+                    if (!card) {
+                        response.sendStatus(404);
+                        response.send(`Card ${request.params.cardId} doesn't exist.`);
+                    } else {
+                        response.type('application/json');
+                        response.send(card);
+                    }
+                }),
+            },
             {
                 path: '/cards/random',
                 method: 'GET',
@@ -40,17 +49,17 @@ export class AppRoutes {
                 }),
             },
             {
-                path: '/external-providers/:cardId',
+                path: '/external-info-providers/:cardId',
                 method: 'GET',
-                handler: asyncHandler(async (requext, response) => {
+                handler: asyncHandler(async (request, response) => {
                     const dataService = new ApiDataService(config);
                     const card = await dataService.getCard(request.params.cardId);
-                    const providers = await dataService.getExternalProviderData(card)
+                    const providers = await dataService.getExternalInfoProviders(card);
 
                     response.type('application.json');
                     response.send(providers);
-                });
-            }
+                }),
+            },
             {
                 path: '/rules-symbols',
                 method: 'GET',
