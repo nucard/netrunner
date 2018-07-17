@@ -42,6 +42,7 @@ export class ApiDataService {
         return Promise.resolve([
             { symbol: '[click]', image: `https://i.imgur.com/t11sIM2.png` },
             { symbol: '[credit]', image: `https://imgur.com/GX1lpdu.png` },
+            { symbol: '[link]', image: 'https://imgur.com/1HN1cR8' },
             { symbol: '[recurring-credit]', image: `https://imgur.com/o0Su9z7.png` },
             { symbol: '[subroutine]', image: `https://imgur.com/i3MgSWH.png` },
             { symbol: '[trash]', image: `https://i.imgur.com/9sQdhQg.png` },
