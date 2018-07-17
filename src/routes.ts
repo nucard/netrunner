@@ -56,8 +56,19 @@ export class AppRoutes {
                     const card = await dataService.getCard(request.params.cardId);
                     const providers = await dataService.getExternalInfoProviders(card);
 
-                    response.type('application.json');
+                    response.type('application/json');
                     response.send(providers);
+                }),
+            },
+            {
+                path: '/factions',
+                method: 'GET',
+                handler: asyncHandler(async (request, response) => {
+                    const dataService = new ApiDataService(config);
+                    const factions = await dataService.getFactions();
+
+                    response.type('application/json');
+                    response.send(factions);
                 }),
             },
             {

@@ -1,4 +1,9 @@
-import { NcCard, NcExternalInfoProvider, NcRulesSymbol } from '@nucard/models/dist';
+import {
+    NcCard,
+    NcExternalInfoProvider,
+    NcFaction,
+    NcRulesSymbol,
+} from '@nucard/models/dist';
 import { Config } from '../config';
 import * as algoliasearch from 'algoliasearch';
 import { FirebaseService } from './firebase.service';
@@ -34,6 +39,51 @@ export class ApiDataService {
                 name: 'ANCUR',
                 icon: 'https://i.imgur.com/13VFnJE.png',
                 url: `https://ancur.wikia.com/wiki/${card.name.replace(/\s+/g, '_')}`,
+            },
+        ]);
+    }
+
+    public getFactions(): Promise<NcFaction[]> {
+        return Promise.resolve([
+            {
+                id: 'anarch',
+                name: 'Anarch',
+                icon: 'https://i.imgur.com/ogAOqAJ.png',
+            },
+            {
+                id: 'criminal',
+                name: 'Criminal',
+                icon: 'https://i.imgur.com/9YAKzSP.png',
+            },
+            {
+                id: 'haas-bioroid',
+                name: 'Haas-Bioroid',
+                icon: 'https://i.imgur.com/XPhsT3b.png',
+            },
+            {
+                id: 'haas-bioroid',
+                name: 'Haas-Bioroid',
+                icon: 'https://i.imgur.com/XPhsT3b.png',
+            },
+            {
+                id: 'jinteki',
+                name: 'Jinteki',
+                icon: 'https://i.imgur.com/QXFIkYk.png',
+            },
+            {
+                id: 'nbn',
+                name: 'NBN',
+                icon: 'https://i.imgur.com/S2gxhVa.png',
+            },
+            {
+                id: 'shaper',
+                name: 'Shaper',
+                icon: 'https://i.imgur.com/cxfimKF.png',
+            },
+            {
+                id: 'weyland-consortium',
+                name: 'Weyland Consortium',
+                icon: 'https://i.imgur.com/Di4jzVK.png',
             },
         ]);
     }
