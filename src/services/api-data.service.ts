@@ -61,11 +61,6 @@ export class ApiDataService {
                 icon: 'https://i.imgur.com/XPhsT3b.png',
             },
             {
-                id: 'haas-bioroid',
-                name: 'Haas-Bioroid',
-                icon: 'https://i.imgur.com/XPhsT3b.png',
-            },
-            {
                 id: 'jinteki',
                 name: 'Jinteki',
                 icon: 'https://i.imgur.com/QXFIkYk.png',
@@ -90,12 +85,19 @@ export class ApiDataService {
 
     public getRulesSymbols(): Promise<NcRulesSymbol[]> {
         return Promise.resolve([
+            { symbol: '[anarch]', image: 'https://i.imgur.com/ogAOqAJ.png' },
             { symbol: '[click]', image: `https://i.imgur.com/t11sIM2.png` },
             { symbol: '[credit]', image: `https://imgur.com/GX1lpdu.png` },
+            { symbol: '[criminal]', image: 'https://i.imgur.com/9YAKzSP.png' },
+            { symbol: '[haas-bioroid]', image: 'https://i.imgur.com/XPhsT3b.png' },
+            { symbol: '[jinteki]', image: 'https://i.imgur.com/QXFIkYk.png' },
             { symbol: '[link]', image: 'https://i.imgur.com/1HN1cR8.png' },
+            { symbol: '[nbn]', image: 'https://i.imgur.com/S2gxhVa.png' },
             { symbol: '[recurring-credit]', image: `https://imgur.com/o0Su9z7.png` },
+            { symbol: '[shaper]', image: `https://imgur.com/cxfimKF.png` },
             { symbol: '[subroutine]', image: `https://imgur.com/i3MgSWH.png` },
             { symbol: '[trash]', image: `https://i.imgur.com/9sQdhQg.png` },
+            { symbol: '[weyland-consortium]', image: `https://i.imgur.com/Di4jzVK.png` },
         ]);
     }
 
