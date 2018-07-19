@@ -23,9 +23,9 @@ export class ApiDataService {
 
         if (cardSnapshot.exists) {
             return cardSnapshot.data() as NcCard;
-        } else {
-            return null;
         }
+
+        return null;
     }
 
     public getExternalInfoProviders(card: NcCard): Promise<NcExternalInfoProvider[]> {
