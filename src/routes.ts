@@ -14,7 +14,7 @@ export class AppRoutes {
                 path: '/cards/:cardId(\\d+)',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const card = await dataService.getCard(request.params.cardId);
 
                     if (!card) {
@@ -30,7 +30,7 @@ export class AppRoutes {
                 path: '/cards/random',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const card = await dataService.getRandomCard();
 
                     response.type('application/json');
@@ -41,7 +41,7 @@ export class AppRoutes {
                 path: '/cards/search/:query',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const cards = await dataService.search(request.params.query);
 
                     response.type('application/json');
@@ -52,7 +52,7 @@ export class AppRoutes {
                 path: '/external-info-providers/:cardId',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const card = await dataService.getCard(request.params.cardId);
                     const providers = await dataService.getExternalInfoProviders(card);
 
@@ -64,7 +64,7 @@ export class AppRoutes {
                 path: '/factions',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const factions = await dataService.getFactions();
 
                     response.type('application/json');
@@ -75,7 +75,7 @@ export class AppRoutes {
                 path: '/rules-symbols',
                 method: 'GET',
                 handler: asyncHandler(async (request, response) => {
-                    const dataService = new ApiDataService(config);
+                    const dataService = await ApiDataService.create(config);
                     const symbols = await dataService.getRulesSymbols();
 
                     response.type('application/json');
